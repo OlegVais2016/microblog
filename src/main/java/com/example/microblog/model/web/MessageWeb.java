@@ -15,6 +15,8 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class MessageWeb {
 
+    private Long messageId;
+
     @NotBlank
     @Length(min = 2, max = 120)
     private String message;

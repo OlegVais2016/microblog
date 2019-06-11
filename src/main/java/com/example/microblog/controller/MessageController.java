@@ -6,12 +6,12 @@ import com.example.microblog.model.web.MessageWeb;
 import com.example.microblog.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
+
+import static com.example.microblog.model.web.MessageWeb.*;
 
 @RestController
 @RequestMapping("/messages")
@@ -20,17 +20,35 @@ public class MessageController {
     @Autowired
     private MessageRepository messageRepository;
 
-    @PostMapping("/create")
+    @PostMapping("/create&update")
     public MessageWeb createMessage(@AuthenticationPrincipal MicroUser user,
                                     @RequestBody @Valid MessageWeb messageWeb){
         Message message = Message
                 .builder()
-                .text(messageWeb.getMessage())
+                .message(messageWeb.getMessage())
                 .build();
         messageRepository.save(message);
-        user.setId(message.getId());
+        user.setId(message.getMessageId());
         return messageWeb;
     }
 
+
+
+
+
+
 }
 
+   /* @GetMapping("/regular/{userId}")
+    public UserWeb getRegularUserInfo
+            (@PathVariable("userId") Long userId) {
+        return userRepository
+                .findById(userId)
+                .map(x -> UserWeb
+                        .builder()
+                        .userId(x.getId())
+                        .username(x.getUsername())
+                        .build())
+                .orElse(null);
+
+    }*/

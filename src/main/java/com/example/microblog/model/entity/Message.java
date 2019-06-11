@@ -15,9 +15,9 @@ public class Message  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long messageId;
 
-    private String text;
+    private String message;
 
     @ManyToOne
     private MicroUser createdBy;
