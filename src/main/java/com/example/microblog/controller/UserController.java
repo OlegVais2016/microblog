@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/users/save")
+    @PostMapping("/microusers/save")
     public MicroUserResponse saveUser(@RequestBody @Valid MicroUserRequest userRequest,
                                                    BindingResult bindingResult) {
 
