@@ -31,24 +31,18 @@ public class MessageController {
         user.setId(message.getMessageId());
         return messageWeb;
     }
-
-
-
-
-
-
-}
-
-   /* @GetMapping("/regular/{userId}")
-    public UserWeb getRegularUserInfo
-            (@PathVariable("userId") Long userId) {
-        return userRepository
-                .findById(userId)
-                .map(x -> UserWeb
-                        .builder()
-                        .userId(x.getId())
-                        .username(x.getUsername())
-                        .build())
+    private MessageWeb transform(Message x){
+        return  MessageWeb
+                .builder()
+                .messageId(x.getMessageId())
+                .message(x.getMessage())
+                .build();
+    }
+    @GetMapping("/{id}")
+    public MessageWeb getById(@PathVariable("id") Long messageId) {
+        return messageRepository
+                .findById(messageId)
+                .map(x -> transform(x))
                 .orElse(null);
-
-    }*/
+    }
+}
