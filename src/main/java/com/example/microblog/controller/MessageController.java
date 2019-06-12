@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.example.microblog.model.web.MessageWeb.*;
 
@@ -57,6 +59,23 @@ public class MessageController {
                 .map(x -> transform(x))
                 .orElse(null);
     }
+    @GetMapping("/posts")
+    public List<MessageWeb> getAll(){
+        return messageRepository.findAll()
+                .stream()
+                .map(x -> transform(x))
+                .collect(Collectors.toList());
+
+    }
+    @GetMapping("/posts/desc")
+    public List<MessageWeb> getTop10(){
+        List<Message> coll = messageRepository.findAll();
+        return coll.stream()
+                .skip(coll.size() - 10)
+                .map(x -> transform(x))
+                .collect(Collectors.toList());
+    }
+
     @PostMapping("/update/{id}/{messageId}")
     public MessageResponse updateMessage(@PathVariable Long id,
                                     @PathVariable Long messageId,
@@ -79,4 +98,15 @@ public class MessageController {
                 .build();
     }
 
+
+
+
+
+
+
+   /* @PostMapping("/upvote/{id}/{messageId}")
+    public void upVoteMessage (@PathVariable Long id,
+                               @PathVariable Long messageId){
+        messageRepository.upVoteMessage(id,messageId);
+    }*/
 }
