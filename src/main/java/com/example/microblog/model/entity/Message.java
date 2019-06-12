@@ -1,9 +1,11 @@
 package com.example.microblog.model.entity;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
@@ -22,4 +24,6 @@ public class Message  {
     @ManyToOne
     private MicroUser createdBy;
 
+    @CreatedDate
+    private LocalDateTime createdOn;
 }
