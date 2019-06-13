@@ -8,13 +8,15 @@ import com.example.microblog.model.web.MessageWeb;
 import com.example.microblog.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.Cacheable;
+
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.microblog.model.web.MessageWeb.*;
+
 
 @RestController
 @RequestMapping("/messages")
@@ -67,7 +69,8 @@ public class MessageController {
                 .collect(Collectors.toList());
 
     }
-    @GetMapping("/posts/desc")
+    @Cacheable(value = "post-top")
+    @GetMapping("/posts/top")
     public List<MessageWeb> getTop10(){
         List<Message> coll = messageRepository.findAll();
         return coll.stream()
