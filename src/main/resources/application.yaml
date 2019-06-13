@@ -1,0 +1,30 @@
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: r00t
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        id:
+          new_generator_mappings: true
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  flyway:
+    enabled: false
+
+
+ps:
+
+  demo:
+    base-url: http://localhost:9090

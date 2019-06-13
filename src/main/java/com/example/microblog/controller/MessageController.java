@@ -70,7 +70,7 @@ public class MessageController {
 
     }
     @Cacheable(value = "post-top")
-    @GetMapping("/posts/top")
+    @GetMapping("/top")
     public List<MessageWeb> getTop10(){
         List<Message> coll = messageRepository.findAll();
         return coll.stream()
