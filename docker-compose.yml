@@ -1,0 +1,23 @@
+
+version: '3.3'
+services:
+  db:
+    container_name: mysqlmicro
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=0qiLax3D3mDAwz0kKuq4R0dyxd4n
+    ports:
+      - "3306:3306"
+  web:
+    container_name: web
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8080:8080"
+    environment:
+      - MYSQL_ROOT_PASSWORD=r00t
+      - MYSQL_ROOT_USERNAME=root
+      - START_DELAY=20000
+    depends_on:
+      - mysqlmicro
