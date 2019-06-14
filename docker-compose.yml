@@ -1,15 +1,16 @@
 
 version: '3.3'
 services:
-  db:
+  microdb:
     image: postgres:9.6
     environment:
       - POSTGRES_PASSWORD=r00t
-    container_name: micro-db
+    container_name: microdb
     ports:
       - "5432:5432"
-  web:
-    container_name: micro-web
+  microweb:
+    image: microblog
+    container_name: microweb
     build:
       dockerfile: Dockerfile
       context: .
@@ -17,7 +18,7 @@ services:
       - "8080:8080"
     restart: always
     depends_on:
-      - micro-db
+      - microdb
 
 
 
