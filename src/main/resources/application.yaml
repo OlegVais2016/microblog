@@ -39,7 +39,7 @@ spring:
 #    enabled: true
 #    change-log: classpath:changelog/changelog-master.xml
 
-ps:
+microblog:
   core:
     registrationConformationUrl: http://localhost:8080//microusers/save
   demo:
