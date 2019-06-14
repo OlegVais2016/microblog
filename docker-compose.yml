@@ -8,7 +8,6 @@ services:
     container_name: micro-db
     ports:
       - "5432:5432"
-
   web:
     container_name: micro-web
     build:
