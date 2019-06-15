@@ -27,13 +27,14 @@ public class GetMessagesImpl implements GetMessagesService {
 
     @Override
     public MessageWeb getById(Long messageId) {
+
         return messageRepository
                 .findById(messageId)
                 .map(x -> transform(x))
                 .orElse(null);
     }
 
-    private MessageWeb transform(Message x){
+     private MessageWeb transform(Message x){
         return  MessageWeb
                 .builder()
                 .messageId(x.getMessageId())

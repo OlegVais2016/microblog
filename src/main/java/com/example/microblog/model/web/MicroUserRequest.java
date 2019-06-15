@@ -21,8 +21,8 @@ public class MicroUserRequest {
     @Length(min = 2, max = 50)
     private String lastName;
 
-    @Email
+    /*@Email
     @NotBlank
     @Length(min = 2, max = 50)
-    private String email;
+    private String email;*/
 }

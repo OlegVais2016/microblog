@@ -8,13 +8,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface MessageRepository extends JpaRepository<Message,Long> {
 
-//    @Query("SELECT E.id\n" +
-//        "    FROM message E\n" +
-//        "    LEFT JOIN \n" +
-//        "        messageId\n" +
-//        "            WHERE likes\n" +
-//        "            GROUP BY messageId\n" +
-//        "     L ON L.messageId = E.id")
-//    void upVoteMessage(@Param("id") Long id,
-//                       @Param("messageId") Long messageId);
+
 }

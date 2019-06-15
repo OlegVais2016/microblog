@@ -19,7 +19,7 @@ public class SaveUserImpl implements SaveUserService {
     public MicroUserResponse saveUser(MicroUserRequest userRequest) {
 
         MicroUser user = MicroUser.builder()
-                .email(userRequest.getEmail())
+//                .email(userRequest.getEmail())
                 .firstName(userRequest.getFirstName())
                 .lastName(userRequest.getLastName())
                 .userType(UserType.REGULAR_BLOGER)

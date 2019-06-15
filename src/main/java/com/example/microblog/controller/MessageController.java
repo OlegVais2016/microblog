@@ -1,11 +1,9 @@
 package com.example.microblog.controller;
 
-import com.example.microblog.model.entity.Message;
-import com.example.microblog.model.entity.MicroUser;
+
 import com.example.microblog.model.web.MessageRequest;
 import com.example.microblog.model.web.MessageResponse;
 import com.example.microblog.model.web.MessageWeb;
-import com.example.microblog.repository.MessageRepository;
 import com.example.microblog.service.CreateMessageService;
 import com.example.microblog.service.GetMessagesService;
 import com.example.microblog.service.UpdateMessageService;
@@ -25,8 +23,6 @@ import java.util.List;
 @RequestMapping("/messages")
 public class MessageController {
 
-    @Autowired
-    private MessageRepository messageRepository;
 
     @Autowired
     private CreateMessageService createMessageService;
@@ -62,9 +58,5 @@ public class MessageController {
         return updateMessageService.updateMessage(id,messageId,messageRequest);
     }
 
-//    @PostMapping("/upVote/{id}/{messageId}")
-//    public void upvoteMessage (@PathVariable Long id,
-//                               @PathVariable Long messageId){
-//        messageRepository.upVoteMessage(id,messageId);
-//    }
+
 }
