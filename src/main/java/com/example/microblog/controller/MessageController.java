@@ -62,8 +62,8 @@ public class MessageController {
         return updateMessageService.updateMessage(id,messageId,messageRequest);
     }
 
-//    @PostMapping("/upvote/{id}/{messageId}")
-//    public void upVoteMessage (@PathVariable Long id,
+//    @PostMapping("/upVote/{id}/{messageId}")
+//    public void upvoteMessage (@PathVariable Long id,
 //                               @PathVariable Long messageId){
 //        messageRepository.upVoteMessage(id,messageId);
 //    }
