@@ -23,6 +23,7 @@ public class CreateMessageImpl implements CreateMessageService {
                 .builder()
                 .id(id)
                 .build();
+        if(user == null) return null;
         Message message = Message
                 .builder()
                 .createdOn(LocalDateTime.now())

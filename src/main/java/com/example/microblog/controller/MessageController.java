@@ -10,14 +10,9 @@ import com.example.microblog.service.UpdateMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.Cacheable;
-
-
 import javax.validation.Valid;
 
 import java.util.List;
-
-
-
 
 @RestController
 @RequestMapping("/messages")

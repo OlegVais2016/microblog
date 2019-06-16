@@ -15,5 +15,6 @@ public class VoteResponse {
     private Long voteId;
     private Long messageId;
     private Byte vote;
+    private String response;
 
 }

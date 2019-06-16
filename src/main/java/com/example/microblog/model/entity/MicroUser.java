@@ -21,9 +21,6 @@ public class MicroUser {
     private String firstName;
     private String lastName;
 
-    @Column(unique = true)
-    private String email;
-
     @Convert(converter = UserTypeConverter.class)
     private UserType userType;
 }

@@ -29,12 +29,19 @@ public class VoteImpl implements VoteService {
     @Override
     public VoteResponse vote(Long id, Long messageId, Byte vote) {
 
-
-
         MicroUser user = MicroUser
                 .builder()
                 .id(id)
                 .build();
+        if(user == null) return null;
+        Vote vote1 = voteRepository.getVote(user,messageId);
+        if(vote1 != null){
+            return VoteResponse
+                    .builder()
+                    .response("You already voted. You can only do it once")
+                    .build();
+        }
+
         Vote like = Vote
                 .builder()
                 .messageId(messageId)

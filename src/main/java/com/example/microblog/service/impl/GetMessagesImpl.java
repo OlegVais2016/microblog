@@ -21,7 +21,7 @@ public class GetMessagesImpl implements GetMessagesService {
         List<Message> coll = messageRepository.findAll();
         return coll.stream()
                 .skip(coll.size() - 10)
-                .map(x -> transform(x))
+                .map(message -> transform(message))
                 .collect(Collectors.toList());
     }
 
@@ -30,15 +30,15 @@ public class GetMessagesImpl implements GetMessagesService {
 
         return messageRepository
                 .findById(messageId)
-                .map(x -> transform(x))
+                .map(message -> transform(message))
                 .orElse(null);
     }
 
-     private MessageWeb transform(Message x){
+     private MessageWeb transform(Message message){
         return  MessageWeb
                 .builder()
-                .messageId(x.getMessageId())
-                .message(x.getMessage())
+                .messageId(message.getMessageId())
+                .message(message.getMessage())
                 .build();
     }
 }
