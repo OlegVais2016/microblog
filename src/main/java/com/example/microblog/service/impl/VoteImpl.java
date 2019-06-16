@@ -20,11 +20,6 @@ public class VoteImpl implements VoteService {
     @Autowired
     private VoteRepository voteRepository;
 
-    @Autowired
-    private MessageRepository messageRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @Override
     public VoteResponse vote(Long id, Long messageId, Byte vote) {
@@ -49,14 +44,13 @@ public class VoteImpl implements VoteService {
                 .vote(vote)
                 .build();
 
-
-
         voteRepository.save(like);
 
         return VoteResponse
                 .builder()
                 .voteId(like.getVoteId())
                 .messageId(messageId)
+                .response("You are voted")
                 .vote(vote)
                 .build();
     }
