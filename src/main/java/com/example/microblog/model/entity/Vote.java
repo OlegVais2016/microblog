@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
+@Table(name="vote")
 public class Vote {
 
     @Id

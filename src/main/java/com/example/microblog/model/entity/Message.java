@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
+@Table(name="message")
 public class Message implements Serializable {
 
     @Id

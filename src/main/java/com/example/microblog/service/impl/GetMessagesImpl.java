@@ -21,7 +21,7 @@ public class GetMessagesImpl implements GetMessagesService {
         List<Message> coll = messageRepository.findAll();
         return coll.stream()
                 .skip(coll.size() - 10)
-                .map(message -> transform(message))
+                .map(this::transform)
                 .collect(Collectors.toList());
     }
 
@@ -30,7 +30,7 @@ public class GetMessagesImpl implements GetMessagesService {
 
         return messageRepository
                 .findById(messageId)
-                .map(message -> transform(message))
+                .map(x -> transform(x))
                 .orElse(null);
     }
 

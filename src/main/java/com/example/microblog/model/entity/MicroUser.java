@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Builder
+@Table(name="microUser")
 public class MicroUser {
 
     @Id

@@ -1,13 +1,24 @@
 
 version: '3.3'
 services:
-  microdb:
-    image: postgres:9.6
+
+#  microdb:
+#    image: postgres:9.6
+#    environment:
+#      - POSTGRES_PASSWORD=r00t
+#    container_name: microdb
+#    ports:
+#      - "5432:5432"
+
+  micro-dbsql:
+    image: mysql/mysql-server:latest
     environment:
-      - POSTGRES_PASSWORD=r00t
-    container_name: microdb
-    ports:
-      - "5432:5432"
+      - MYSQL_ROOT_PASSWORD=1234
+      container_name: micro-dbsql
+      ports:
+      - "3306:3306"
+
+
   microweb:
     image: microblog
     container_name: microweb
@@ -18,7 +29,7 @@ services:
       - "8080:8080"
     restart: always
     depends_on:
-      - microdb
+      - micro-dbsql
 
 
 
